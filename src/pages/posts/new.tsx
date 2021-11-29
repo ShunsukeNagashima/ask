@@ -10,7 +10,7 @@ type FormData = {
   restrict: boolean;
 };
 
-const NewPost: NextPage = () => {
+const NewPostPage: NextPage = () => {
   const {
     register,
     handleSubmit,
@@ -97,4 +97,4 @@ const NewPost: NextPage = () => {
   );
 };
 
-export default NewPost;
+export default NewPostPage;

@@ -6,7 +6,7 @@ import Layout from '../components/ui-elements/Layout';
 
 type tabTitles = 'allPosts' | 'myPosts';
 
-const PostsList: NextPage = () => {
+const PostsListPage: NextPage = () => {
   const [openTab, setOpenTab] = useState<tabTitles>('allPosts');
   const classes = {
     baseTab:
@@ -52,4 +52,4 @@ const PostsList: NextPage = () => {
   );
 };
 
-export default PostsList;
+export default PostsListPage;
