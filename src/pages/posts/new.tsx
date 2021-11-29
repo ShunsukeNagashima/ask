@@ -50,7 +50,7 @@ const NewPostPage: NextPage = () => {
             <label>Reward for best answer</label>
             <div>
               <input
-                className="input appearance-none"
+                className="input"
                 type="number"
                 step="0.000000001"
                 {...register('reward', {
