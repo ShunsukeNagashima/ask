@@ -53,7 +53,13 @@ const NewPostPage: NextPage = () => {
                 className="input appearance-none"
                 type="number"
                 step="0.000000001"
-                {...register('reward', { required: 'This field is required.' })}
+                {...register('reward', {
+                  required: 'This field is required.',
+                  min: {
+                    value: 0,
+                    message: 'Please Enter values greater than zero.',
+                  },
+                })}
               />
               <span className="px-3">Ether</span>
             </div>
