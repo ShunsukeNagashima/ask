@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import Layout from '../ui-elements/Layout';
 import { NewPostComponent } from './newPost';
 
 export type FormData = {
@@ -21,12 +20,6 @@ export const NewPost: React.FC = () => {
   });
 
   return (
-    <Layout>
-      <NewPostComponent
-        onSubmit={onSubmit}
-        register={register}
-        errors={errors}
-      />
-    </Layout>
+    <NewPostComponent onSubmit={onSubmit} register={register} errors={errors} />
   );
 };
