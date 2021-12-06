@@ -43,8 +43,8 @@ export const NewPostComponent: React.FC<Props> = (props) => {
               step="0.000000001"
               {...register('reward', {
                 required: 'This field is required.',
-                min: {
-                  value: 0,
+                pattern: {
+                  value: /^([1-9]\d*|0)(\.\d+)?$/,
                   message: 'Please Enter values greater than zero.',
                 },
               })}
