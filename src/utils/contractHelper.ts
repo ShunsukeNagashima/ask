@@ -16,7 +16,7 @@ export const createQuestion = async (web3: Web3, reward: number, contents: strin
   })
 }
 
-export const getQuestions = async (web3: Web3) => {
+export const getQuestionCount = async (web3: Web3) => {
   const contract = makeContract(web3);
   return await contract.methods.getQuestionCount().call();
 }
