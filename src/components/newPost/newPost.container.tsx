@@ -13,7 +13,7 @@ export const NewPost: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ mode: 'onBlur' });
 
   const onSubmit = handleSubmit((data: FormData) => {
     console.log(data);
