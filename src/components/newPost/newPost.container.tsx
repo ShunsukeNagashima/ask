@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { Layout } from '../layout';
+import BN from 'bn.js';
 import { NewPostComponent } from './newPost';
 import { Web3Container } from 'src/container/web3Container';
 import { createQuestion } from '../../utils/contractHelper';
@@ -8,7 +8,7 @@ import { createQuestion } from '../../utils/contractHelper';
 export type FormData = {
   title: string;
   description: string;
-  reward: string;
+  reward: number;
   restrict: boolean;
 };
 
@@ -34,7 +34,7 @@ export const NewPost: React.FC = () => {
 
         await createQuestion(
           web3,
-          parseInt(web3.utils.toWei(data.reward, 'ether')),
+          web3.utils.toWei(new BN(data.reward), 'ether'),
           hex
         );
 
@@ -48,12 +48,6 @@ export const NewPost: React.FC = () => {
   });
 
   return (
-    <Layout>
-      <NewPostComponent
-        onSubmit={onSubmit}
-        register={register}
-        errors={errors}
-      />
-    </Layout>
+    <NewPostComponent onSubmit={onSubmit} register={register} errors={errors} />
   );
 };
