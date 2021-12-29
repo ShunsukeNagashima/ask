@@ -17,7 +17,7 @@ export const NewPost: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ mode: 'onBlur' });
 
   const router = useRouter();
   const { web3 } = Web3Container.useContainer();
