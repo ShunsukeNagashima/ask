@@ -21,3 +21,14 @@ export const getQuestionCount = async (web3: Web3) => {
   const contract = makeContract(web3);
   return await contract.methods.getQuestionCount().call();
 }
+
+export const getQuestions = async (web3: Web3) => {
+  const contract = makeContract(web3);
+  const questionCount = await contract.methods.getQuestionCount().call();
+  const questions = await Promise.all(
+    Array(parseInt(questionCount)).fill().map((element, index) => {
+      return contract.methods.questions(index).call();
+    })
+  )
+  return questions
+}

@@ -1,14 +1,11 @@
 import Link from 'next/link';
 import clsx from 'clsx';
-import { tabTitles } from './posts.container';
+import { PostComponentsProps } from './types';
+import { PostItem } from '../postItem';
+import { Spinner } from '../spinner';
 
-type Props = {
-  openTab: 'allPosts' | 'myPosts';
-  setOpenTab: (tab: tabTitles) => void;
-};
-
-export const PostsComponent: React.FC<Props> = (props) => {
-  const { openTab, setOpenTab } = props;
+export const PostsComponent: React.FC<PostComponentsProps> = (props) => {
+  const { openTab, setOpenTab, posts, isLoading } = props;
 
   const classes = {
     baseTab:
@@ -49,6 +46,20 @@ export const PostsComponent: React.FC<Props> = (props) => {
           </button>
         </nav>
         <hr className="border-b-2 border-blue-500" />
+      </div>
+
+      <div className="grid grid-cols-1 gap-3 justify-items-center container mx-auto mt-6">
+        {isLoading && <Spinner />}
+        {posts &&
+          posts.length > 0 &&
+          (openTab === 'allPosts' ? (
+            posts.map((post, index) => {
+              return <PostItem key={index} post={post} />;
+            })
+          ) : (
+            //TODO
+            <h2>posts filtered by addrss</h2>
+          ))}
       </div>
     </div>
   );
