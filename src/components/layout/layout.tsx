@@ -1,7 +1,9 @@
-import React from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
+import { ConnectWalletModal } from '../connectWalletModal';
 
-const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <div>
       <nav className="flex bg-blue-500 justify-end items-center text-white mb-8">
@@ -9,6 +11,11 @@ const Layout: React.FC = ({ children }) => {
           <Link href="/">
             <a>ASK</a>
           </Link>
+        </div>
+        <div className="block p-4 hover:bg-blue-700">
+          <button onClick={() => setShowModal(true)}>
+            <a>Connect Wallet</a>
+          </button>
         </div>
         <div className="block p-4 hover:bg-blue-700">
           <Link href="/">
@@ -22,8 +29,7 @@ const Layout: React.FC = ({ children }) => {
         </div>
       </nav>
       {children}
+      {showModal && <ConnectWalletModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };
-
-export default Layout;
