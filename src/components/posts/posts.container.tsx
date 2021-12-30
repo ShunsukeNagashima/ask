@@ -12,7 +12,7 @@ export const Posts: React.FC = () => {
 
   useEffect(() => {
     if (web3) {
-      const featchPosts = async () => {
+      const fetchPosts = async () => {
         setIsLoading(true);
         try {
           const fetchedData = await getQuestions(web3);
@@ -32,7 +32,7 @@ export const Posts: React.FC = () => {
         }
         setIsLoading(false);
       };
-      featchPosts();
+      fetchPosts();
     }
   }, [web3]);
 
