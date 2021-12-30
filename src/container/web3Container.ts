@@ -17,7 +17,7 @@ const useWeb3 = () => {
   useEffect(() => {
     const setup = async () => {
       if (!web3) {
-        const provider = (await detectEthereumProvider()) as AbstractProvider;
+        const provider = (await detectEthereumProvider()) as AbstractProvider || new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_PROVIDER_URL!);
         setWeb3(new Web3(provider));
       }
     };
