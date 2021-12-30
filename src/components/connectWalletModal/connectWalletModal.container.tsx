@@ -8,9 +8,14 @@ export type Props = {
 export const ConnectWalletModal: React.FC<Props> = ({ onClose }) => {
   const { connectMetamask } = useMetamask();
 
+  const connectWallet = async () => {
+    await connectMetamask();
+    onClose();
+  };
+
   return (
     <ConnectWalletModalComponent
-      connectMetamask={connectMetamask}
+      connectMetamask={connectWallet}
       onClose={onClose}
     />
   );
