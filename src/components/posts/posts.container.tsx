@@ -20,8 +20,8 @@ export const Posts: React.FC = () => {
             const contents = JSON.parse(web3.utils.hexToString(data.contents));
             return {
               questioner: data.questioner,
-              title: contents.title,
-              description: contents.description,
+              title: String(contents.title),
+              description: String(contents.description),
               restrict: contents.restrict === 'true',
               incentive: data.incentive,
             };
