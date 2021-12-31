@@ -19,5 +19,11 @@ export const createQuestion = async (web3: Web3, reward: BN, contents: string) =
 
 export const getQuestions = async (web3: Web3) => {
   const contract = makeContract(web3);
-  return await contract.methods.getQuestionCount().call();
+  const questionCount = await contract.methods.getQuestionCount().call();
+  const questions = await Promise.all(
+    Array(parseInt(questionCount)).fill(null).map((element, index) => {
+      return contract.methods.questions(index).call();
+    })
+  )
+  return questions
 }
