@@ -22,7 +22,7 @@ export const Posts: React.FC = () => {
               questioner: data.questioner,
               title: String(contents.title),
               description: String(contents.description),
-              restrict: contents.restrict === 'true',
+              restrict: Boolean(contents.restrict),
               incentive: data.incentive,
             };
           });
