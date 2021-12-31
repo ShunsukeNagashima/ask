@@ -8,7 +8,7 @@ import { createQuestion } from '../../utils/contractHelper';
 export type FormData = {
   title: string;
   description: string;
-  reward: number;
+  reward: string;
   restrict: boolean;
 };
 
@@ -34,7 +34,7 @@ export const NewPost: React.FC = () => {
 
         await createQuestion(
           web3,
-          web3.utils.toWei(new BN(data.reward), 'ether'),
+          new BN(web3.utils.toWei(data.reward, 'ether')),
           hex
         );
 
