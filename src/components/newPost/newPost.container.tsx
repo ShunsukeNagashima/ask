@@ -9,7 +9,7 @@ export type FormData = {
   title: string;
   description: string;
   reward: string;
-  restrict: boolean;
+  restrict: string;
 };
 
 export const NewPost: React.FC = () => {
@@ -28,7 +28,7 @@ export const NewPost: React.FC = () => {
         const contents = {
           title: data.title,
           description: data.description,
-          restrict: data.restrict,
+          restrict: data.restrict === 'true',
         };
         const hex = web3.utils.stringToHex(JSON.stringify(contents));
 
