@@ -5,7 +5,7 @@ import { PostItem } from '../postItem';
 import { Spinner } from '../spinner';
 
 export const PostsComponent: React.FC<PostComponentsProps> = (props) => {
-  const { openTab, setOpenTab, posts, isLoading } = props;
+  const { openTab, setOpenTab, posts, filteredPosts, isLoading } = props;
 
   const classes = {
     baseTab:
@@ -50,16 +50,9 @@ export const PostsComponent: React.FC<PostComponentsProps> = (props) => {
 
       <div className="grid grid-cols-1 gap-3 justify-items-center container mx-auto mt-6">
         {isLoading && <Spinner />}
-        {posts &&
-          posts.length > 0 &&
-          (openTab === 'allPosts' ? (
-            posts.map((post, index) => {
-              return <PostItem key={index} post={post} />;
-            })
-          ) : (
-            //TODO
-            <h2>posts filtered by addrss</h2>
-          ))}
+        {openTab === 'allPosts'
+          ? posts?.map((post, i) => <PostItem key={i} post={post} />)
+          : filteredPosts?.map((post, i) => <PostItem key={i} post={post} />)}
       </div>
     </div>
   );

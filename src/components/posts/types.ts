@@ -10,6 +10,7 @@ export type PostComponentsProps = {
   openTab: 'allPosts' | 'myPosts';
   setOpenTab: (tab: TabTitles) => void;
   posts: Post[] | undefined;
+  filteredPosts: Post[] | undefined
   isLoading: boolean;
 };
 
